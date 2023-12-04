@@ -19,7 +19,7 @@ lvm(){
 	fi
      }
 tcp=$(netstat | sed -E 's|tcp.+EST|tcpEST|g' | grep "tcpESTABLISHED" | wc -l)
-nuser=$(who | wc -l)
+nuser=$(users | wc -w)
 ipaddr=$(hostname -I | cut -d " " -f1)
 macaddr=$(ip a show enp0s3 | grep "ether" | tr -s " " | cut -d " " -f 3)
 nsudo=$(journalctl -q _COMM=sudo | grep -E "TTY.+PWD" | wc -l)
